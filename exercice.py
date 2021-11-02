@@ -8,16 +8,15 @@ import recettes
 
 def first_difference_finder(file1, file2) -> tuple:
     with open(file1, "r", encoding = "utf-8") as file1, open(file2, "r", encoding = "utf-8") as file2:
-            content_file1 = file1.read(1)
-            content_file2 = file2.read(1)
+            character_file1 = file1.read(1)
+            character_file2 = file2.read(1)
             position = 1
-            while content_file1 == content_file2:
-                content_file1 = file1.read(1)
-                content_file2 = file2.read(1)
+            while character_file1 == character_file2:
+                character_file1 = file1.read(1)
+                character_file2 = file2.read(1)
                 position += 1
-            first_difference = content_file1
 
-    return first_difference, position
+    return character_file1, position
 
 
 def triple_spaces_file(file_given, file_to_write) -> __file__:
@@ -47,12 +46,12 @@ def recipes_book(file_recipes):
         new_recipe = recettes.add_recipes({})
         for name in new_recipe.keys():
             ingredients = new_recipe[name]
-            with open(file_recipes, "a", encoding="utf-8") as recipes:
+            with open(file_recipes, "a", encoding = "utf-8") as recipes:
                 recipes.write(str(name) + " : " + str(ingredients) + "\n")
 
     elif choice == "2":
         dictionary = {}
-        with open(file_recipes, "r", encoding="utf-8") as recipes_list:
+        with open(file_recipes, "r", encoding = "utf-8") as recipes_list:
             for line in recipes_list:
                 recipe = line.split(" : ")[0]
                 ingredients = line.split(" : ")[1].split("\n")[0]
@@ -62,7 +61,7 @@ def recipes_book(file_recipes):
 
 def sorted_number_in_file(file) -> list:
     numbers_in_file = []
-    with open(file, "r", encoding="utf-8") as content:
+    with open(file, "r", encoding = "utf-8") as content:
         for line in content:
             number = ""
             for character in line:
@@ -84,7 +83,6 @@ def every_other_line(file) -> __file__:
 
 
 if __name__ == '__main__':
-    # TODO: Appelez vos fonctions ici
     first_difference, position = first_difference_finder("exemple.txt", "exemplecopy.txt")
     print(f"La première différence rencontrée est {first_difference} et elle se retrouve après {position} caractères")
     triple_spaces_file("exemple.txt", "exemplewrite.txt")
@@ -92,4 +90,3 @@ if __name__ == '__main__':
     recipes_book("recettes.txt")
     print("Les nombres présents dans le document sont: " + str(sorted_number_in_file("exemple.txt")))
     every_other_line("notes.txt")
-
