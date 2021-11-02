@@ -3,10 +3,9 @@
 
 PERCENTAGE_TO_LETTER = {"A*": [95, 101], "A": [90, 95], "B+": [85, 90], "B": [80, 85], "C+": [75, 80], "C": [70, 75], "F": [0, 70]}
 
-# TODO: Importez vos modules ici
 import recettes 
 
-# TODO: Définissez vos fonction ici
+
 def first_difference_finder(file1, file2) -> tuple:
     with open(file1, "r", encoding = "utf-8") as file1, open(file2, "r", encoding = "utf-8") as file2:
             content_file1 = file1.read(1)
@@ -30,7 +29,7 @@ def triple_spaces_file(file_given, file_to_write) -> __file__:
             file_w.write("\n")
 
 
-def grades_equivalent_letter(file_grades, equivalence : dict) -> __file__:
+def grades_equivalent_letter(file_grades, equivalence: dict) -> __file__:
     mentions_equivalent = equivalence.items()
     with open(file_grades, "r", encoding = "utf-8") as grades, open("notes+mentions.txt", "w", encoding = "utf-8") as mentions:
         for line in grades:
